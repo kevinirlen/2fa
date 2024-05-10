@@ -1,0 +1,11 @@
+# See the configuration reference at https://symfony.com/bundles/SchebTwoFactorBundle/6.x/configuration.html
+scheb_two_factor:
+    security_tokens:
+        - Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken
+        - Symfony\Component\Security\Http\Authenticator\Token\PostAuthenticationToken
+    email:
+        enabled: true
+        sender_email: 2fa@mysuperapp.com
+        sender_name: Meet the force
+        template: 'security/two_factor.html.twig'
+        digits: 6 # the number of digits for the code

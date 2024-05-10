@@ -14,6 +14,8 @@
         "doctrine/doctrine-migrations-bundle": "^3.3",
         "doctrine/orm": "^3.1",
         "runtime/frankenphp-symfony": "^0.2.0",
+        "scheb/2fa-bundle": "^7.3",
+        "scheb/2fa-email": "^7.3",
         "symfony/console": "7.0.*",
         "symfony/dotenv": "7.0.*",
         "symfony/flex": "^2",
