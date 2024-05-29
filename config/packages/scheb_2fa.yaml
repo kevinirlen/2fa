@@ -9,3 +9,10 @@ scheb_two_factor:
         sender_name: Meet the force
         template: 'security/two_factor.html.twig'
         digits: 6 # the number of digits for the code
+
+#two_factor_text:
+#    enabled: true
+#    auth_code_sender: App\Security\TwoFactor\AuthCodeText
+#    digits: 6
+#    text: 'To login, use this code: %s'
+#    template: '@SchebTwoFactor/Authentication/form.html.twig'
