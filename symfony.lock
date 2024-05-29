@@ -26,6 +26,9 @@
             "migrations/.gitignore"
         ]
     },
+    "erkens/2fa-text": {
+        "version": "v2.2.1"
+    },
     "scheb/2fa-bundle": {
         "version": "7.3",
         "recipe": {
