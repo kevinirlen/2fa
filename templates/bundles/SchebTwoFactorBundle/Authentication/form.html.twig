@@ -13,7 +13,7 @@
 
                         {# Let the user select the authentication method #}
                         {% if availableTwoFactorProviders|length > 1 %}
-                            <p>{{ "choose_provider"|trans({}, 'SchebTwoFactorBundle') }}:
+                            <p class="text-white">{{ "choose_provider"|trans({}, 'SchebTwoFactorBundle') }}:
                                 {% for provider in availableTwoFactorProviders %}
                                     <a href="{{ path("2fa_login", {"preferProvider": provider}) }}">{{ provider }}</a>
                                 {% endfor %}

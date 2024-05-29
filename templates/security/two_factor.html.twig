@@ -8,7 +8,7 @@
                 <div class="card-body">
                     {# Authentication errors #}
                     {% if authenticationError %}
-                        {{ authenticationError|trans(authenticationErrorData, 'SchebTwoFactorBundle') }}</p>
+                       <p class="text-white">{{ authenticationError|trans(authenticationErrorData, 'SchebTwoFactorBundle') }}</p>
                     {% endif %}
 
                     {# Let the user select the authentication method #}
