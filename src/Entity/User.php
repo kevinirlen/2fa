@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Erkens\Security\TwoFactorTextBundle\Model\TwoFactorTextInterface;
 use Scheb\TwoFactorBundle\Model\Email\TwoFactorInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -11,7 +12,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
 #[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_EMAIL', fields: ['email'])]
-class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFactorInterface
+class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFactorInterface, TwoFactorTextInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -41,6 +42,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
 
     #[ORM\Column(length: 6)]
     private ?string $authCode;
+
+    #[ORM\Column(length: 20)]
+    private ?string $phone;
 
     public function getId(): ?int
     {
@@ -164,6 +168,50 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
     }
 
     public function setEmailAuthCode(string $authCode): void
+    {
+        $this->authCode = $authCode;
+    }
+
+    public function getPhone(): ?string
+    {
+        return $this->phone;
+    }
+
+    public function setPhone(?string $phone): User
+    {
+        $this->phone = $phone;
+
+        return $this;
+    }
+
+    public function getAuthCode(): ?string
+    {
+        return $this->authCode;
+    }
+
+    public function setAuthCode(?string $authCode): User
+    {
+        $this->authCode = $authCode;
+
+        return $this;
+    }
+
+    public function isTextAuthEnabled(): bool
+    {
+        return true;
+    }
+
+    public function getTextAuthRecipient(): string
+    {
+        return $this->phone;
+    }
+
+    public function getTextAuthCode(): string
+    {
+        return $this->authCode;
+    }
+
+    public function setTextAuthCode(string $authCode): void
     {
         $this->authCode = $authCode;
     }
